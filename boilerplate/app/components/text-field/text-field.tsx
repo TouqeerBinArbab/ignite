@@ -1,12 +1,13 @@
 import React from "react"
 import { StyleProp, TextInput, TextInputProps, TextStyle, View, ViewStyle } from "react-native"
-import { color, spacing, typography } from "../../theme"
+import { color, images, spacing, typography } from "../../theme"
 import { translate, TxKeyPath } from "../../i18n"
 import { Text } from "../text/text"
+import { Icon } from ".."
 
 // the base styling for the container
 const CONTAINER: ViewStyle = {
-  paddingVertical: spacing[3],
+  paddingVertical: spacing[1],
 }
 
 // the base styling for the TextInput
@@ -89,10 +90,12 @@ export function TextField(props: TextFieldProps) {
         placeholder={actualPlaceholder}
         placeholderTextColor={color.palette.lighterGrey}
         underlineColorAndroid={color.transparent}
+        
         {...rest}
         style={inputStyles}
         ref={forwardedRef}
       />
+      {/* <Icon icon={images.icSearch} style={{position:'absolute'}} /> */}
     </View>
   )
 }

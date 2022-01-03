@@ -8,8 +8,9 @@ import React from "react"
 import { useColorScheme } from "react-native"
 import { NavigationContainer, DefaultTheme, DarkTheme } from "@react-navigation/native"
 import { createNativeStackNavigator } from "@react-navigation/native-stack"
-import { WelcomeScreen, DemoScreen, DemoListScreen } from "../screens"
+import { DemoScreen, DemoListScreen, SettingsScreen, ResultsScreen } from "../screens"
 import { navigationRef, useBackButtonHandler } from "./navigation-utilities"
+import { ShippedScreen } from "../screens/shipped/shipped-screen"
 
 /**
  * This type allows TypeScript to know what routes are defined in this navigator
@@ -27,6 +28,9 @@ export type NavigatorParamList = {
   welcome: undefined
   demo: undefined
   demoList: undefined
+  settings: undefined
+  results: undefined
+  shipped: undefined
 }
 
 // Documentation: https://reactnavigation.org/docs/stack-navigator/
@@ -34,15 +38,12 @@ const Stack = createNativeStackNavigator<NavigatorParamList>()
 
 const AppStack = () => {
   return (
-    <Stack.Navigator
-      screenOptions={{
-        headerShown: false,
-      }}
-      initialRouteName="welcome"
-    >
-      <Stack.Screen name="welcome" component={WelcomeScreen} />
+    <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName="settings">
+      <Stack.Screen name="settings" component={SettingsScreen} />
       <Stack.Screen name="demo" component={DemoScreen} />
       <Stack.Screen name="demoList" component={DemoListScreen} />
+      <Stack.Screen name="results" component={ResultsScreen} />
+      <Stack.Screen name="shipped" component={ShippedScreen} />
     </Stack.Navigator>
   )
 }
